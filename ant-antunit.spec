@@ -6,7 +6,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.2
-Release:          10.11%{?dist}
+Release:          10.12%{?dist}
 Summary:          Provide antunit ant task
 License:          ASL 2.0
 URL:              http://ant.apache.org/antlibs/%{base_name}/
@@ -42,7 +42,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n apache-%{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 mv CONTRIBUTORS CONTRIBUTORS.orig
 iconv -f ISO-8859-1 -t UTF-8 CONTRIBUTORS.orig > CONTRIBUTORS
@@ -51,14 +51,14 @@ touch -r CONTRIBUTORS.orig CONTRIBUTORS
 
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 ant package
 %{?scl:EOF}
 
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}
@@ -90,6 +90,9 @@ echo "ant/ant-antunit" > %{buildroot}%{_sysconfdir}/%{pkg_name}.d/antunit
 
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.2-10.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.2-10.11
 - maven33 rebuild
 
