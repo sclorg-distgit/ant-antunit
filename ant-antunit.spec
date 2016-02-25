@@ -6,7 +6,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.2
-Release:          10.12%{?dist}
+Release:          10.13%{?dist}
 Summary:          Provide antunit ant task
 License:          ASL 2.0
 URL:              http://ant.apache.org/antlibs/%{base_name}/
@@ -90,6 +90,9 @@ echo "ant/ant-antunit" > %{buildroot}%{_sysconfdir}/%{pkg_name}.d/antunit
 
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.2-10.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.2-10.12
 - maven33 rebuild #2
 
